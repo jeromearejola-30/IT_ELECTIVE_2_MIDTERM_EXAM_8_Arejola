@@ -1,0 +1,26 @@
+﻿@model ConferenceCheckIn.Models.AttendeeVisit
+
+@{
+    ViewData["Title"] = "Confirm Check-Out";
+}
+
+<h2 class="text-danger">Record Check-Out</h2>
+<p class="lead">Are you sure you want to record departure for this attendee?</p>
+<hr />
+
+<div class="card border-danger col-md-6">
+    <div class="card-body">
+        <h5>@Model.FirstName @Model.LastName</h5>
+        <p class="mb-1"><strong>Ticket #:</strong> @Model.TicketNumber</p>
+        <p class="mb-1"><strong>Organization:</strong> @Model.Organization</p>
+        <p class="mb-1"><strong>Event:</strong> @Model.EventName</p>
+        <p class="mb-0"><strong>Check-In Time:</strong> @Model.CheckInTime.ToString("g")</p>
+    </div>
+    <div class="card-footer">
+        <form asp-action="Checkout" method="post">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">Confirm Departure</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
